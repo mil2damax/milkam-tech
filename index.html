@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Built by Milkam — Technology for Our Hotels</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --cream-dark: #EDE6D6;
+    --ink: #1C1A14;
+    --ink-soft: #2C2518;
+    --gold: #B8922A;
+    --gold-light: #C8A84B;
+    --muted: #8A7D65;
+    --muted-light: #9A8D78;
+    --border: #D4C9B0;
+    --white: #ffffff;
+    --green: #2E7D52;
+    --green-bg: #D4EDD8;
+    --amber-bg: #FDE8C0;
+    --amber-text: #854F0B;
+    --red-light: #FAD7D5;
+    --red-text: #C0392B;
+    --blue-dot: #378ADD;
+    --green-dot: #639922;
+    --amber-dot: #BA7517;
+    --font-serif: Georgia, 'Times New Roman', serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink-soft);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--ink);
+    padding: 14px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-brand {
+    color: var(--gold-light);
+    font-family: var(--font-serif);
+    font-size: 16px;
+    letter-spacing: 0.02em;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    transition: color 0.15s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+  /* HERO */
+  .hero {
+    padding: 80px 5% 64px;
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: normal;
+    color: var(--ink-soft);
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+  .hero h1 em {
+    color: var(--gold);
+    font-style: normal;
+  }
+  .hero-sub {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 460px;
+    margin: 0 auto 32px;
+    line-height: 1.7;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    background: var(--ink);
+    color: var(--gold-light);
+    padding: 6px 16px;
+    border-radius: 999px;
+    border: 0.5px solid #3A3020;
+  }
+
+  /* DIVIDER */
+  .divider {
+    border: none;
+    border-top: 0.5px solid var(--border);
+    margin: 0 5%;
+  }
+
+  /* SECTION */
+  section {
+    padding: 56px 5%;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 32px;
+  }
+
+  /* APP CARDS */
+  .apps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .app-card {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  .app-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    font-size: 20px;
+  }
+  .icon-tack { background: var(--green-bg); color: var(--green); }
+  .icon-catbird { background: #EEEDFE; color: #534AB7; }
+  .icon-tapauth { background: #E6F1FB; color: #185FA5; }
+
+  .app-status {
+    display: inline-block;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  .status-live { background: var(--green-bg); color: var(--green); }
+  .status-dev { background: var(--amber-bg); color: var(--amber-text); }
+
+  .app-name {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+  }
+  .app-desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 18px;
+  }
+  .app-tag {
+    font-size: 12px;
+    color: var(--muted-light);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  /* APP SCREENSHOTS */
+  .screenshot-section {
+    padding: 0 5% 56px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .screenshot-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 12px;
+  }
+  @media (max-width: 720px) {
+    .screenshot-row { grid-template-columns: 1fr; }
+  }
+  .screenshot-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+  .screenshot-frame {
+    background: var(--ink);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 0.5px solid #3A3020;
+  }
+  .screenshot-frame .frame-bar {
+    background: #14120C;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .dot-r { width: 8px; height: 8px; border-radius: 50%; background: #C0392B; }
+  .dot-y { width: 8px; height: 8px; border-radius: 50%; background: #F39C12; }
+  .dot-g { width: 8px; height: 8px; border-radius: 50%; background: #27AE60; }
+  .frame-url { font-size: 10px; color: #5A5040; margin-left: 8px; }
+  .frame-content { padding: 0; }
+
+  /* TACK MOCKUP */
+  .tack-nav-bar {
+    background: #1C1A14;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .tack-nav-left { display: flex; align-items: center; gap: 8px; }
+  .owner-badge {
+    background: var(--gold);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 500;
+    padding: 2px 7px;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+  .tack-title-text { color: #E8DFC8; font-size: 13px; font-weight: 500; }
+  .tack-sub-text { color: #6A6050; font-size: 10px; }
+  .lang-row { display: flex; gap: 4px; }
+  .lp { font-size: 9px; padding: 2px 6px; border-radius: 3px; font-weight: 500; }
+  .lp-en { background: var(--gold); color: #fff; }
+  .lp-es { color: #6A6050; border: 0.5px solid #3A3020; }
+  .tack-tabs-bar {
+    background: var(--cream);
+    display: flex;
+    border-bottom: 0.5px solid var(--border);
+  }
+  .ttab {
+    padding: 9px 14px;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .ttab.active { color: var(--gold); border-bottom: 2px solid var(--gold); }
+  .tack-body-inner { padding: 14px; background: var(--cream); }
+  .period-pills { display: flex; gap: 5px; margin-bottom: 14px; }
+  .pp {
+    font-size: 10px;
+    padding: 3px 9px;
+    border-radius: 999px;
+    border: 0.5px solid var(--border);
+    color: var(--muted);
+  }
+  .pp.active { background: var(--gold); color: #fff; border-color: var(--gold); }
+  .sum-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 14px; }
+  .sc { background: var(--cream-dark); border-radius: 7px; padding: 9px; text-align: center; }
+  .sc-label { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 3px; }
+  .sc-val { font-size: 17px; font-weight: 500; color: var(--ink-soft); }
+  .sc-val.pos { color: var(--green); }
+  .slbl { font-size: 9px; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+  .hcard { background: var(--white); border-radius: 8px; border: 0.5px solid var(--border); padding: 10px 12px; margin-bottom: 8px; }
+  .hcard-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1px; }
+  .hcard-name { font-size: 12px; font-weight: 500; }
+  .hcard-shifts { font-size: 10px; color: var(--muted); }
+  .hcard-code { font-size: 9px; color: #A09080; margin-bottom: 8px; }
+  .hcard-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 8px; text-align: center; }
+  .hs-val { font-size: 14px; font-weight: 500; color: var(--ink-soft); }
+  .hs-val.pos { color: var(--green); }
+  .hs-lbl { font-size: 9px; color: var(--muted); text-transform: uppercase; }
+  .bar-pills { display: flex; gap: 4px; }
+  .bp { flex: 1; padding: 3px 0; border-radius: 3px; text-align: center; font-size: 9px; font-weight: 500; }
+  .bp-g { background: var(--green-bg); color: var(--green); }
+  .bp-r { background: var(--red-light); color: var(--red-text); }
+  .bp-a { background: var(--amber-bg); color: var(--amber-text); }
+
+  /* CATBIRD MOCKUP */
+  .cb-nav-bar {
+    background: #1C1A14;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cb-brand-text { color: var(--gold-light); font-size: 13px; font-family: var(--font-serif); }
+  .cb-badge-pill {
+    background: #2A2820;
+    color: var(--gold-light);
+    font-size: 9px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    border: 0.5px solid var(--gold-light);
+    letter-spacing: 0.05em;
+    margin-left: 8px;
+  }
+  .cb-nav-links-bar { display: flex; gap: 14px; }
+  .cbnl { font-size: 9px; color: #6A6050; letter-spacing: 0.06em; text-transform: uppercase; }
+  .cbnl.active { color: var(--gold-light); border-bottom: 1px solid var(--gold-light); padding-bottom: 1px; }
+  .cb-body-inner { padding: 16px; background: var(--cream); }
+  .cb-page-h { font-size: 16px; font-weight: 500; color: var(--ink-soft); margin-bottom: 2px; }
+  .cb-page-s { font-size: 9px; color: var(--muted-light); letter-spacing: 0.04em; margin-bottom: 14px; }
+  .cb-kpi-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 14px; }
+  .ck { background: var(--white); border: 0.5px solid var(--border); border-radius: 7px; padding: 9px; }
+  .ck-lbl { font-size: 8px; color: var(--muted-light); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 5px; }
+  .ck-val { font-size: 13px; font-weight: 500; color: var(--ink-soft); }
+  .ck-sub { font-size: 9px; color: var(--green); margin-top: 2px; }
+  .cb-props-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .cprop { background: var(--white); border: 0.5px solid var(--border); border-radius: 8px; padding: 12px; }
+  .cprop-head { display: flex; align-items: center; gap: 7px; margin-bottom: 10px; }
+  .cdot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .cprop-name { font-size: 11px; font-weight: 500; color: var(--ink-soft); }
+  .cprop-code { font-size: 9px; color: var(--muted-light); }
+  .cprop-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin-bottom: 9px; }
+  .cps-val { font-size: 12px; font-weight: 500; color: var(--ink-soft); }
+  .cps-lbl { font-size: 8px; color: var(--muted-light); text-transform: uppercase; }
+  .cprop-foot { display: flex; justify-content: space-between; padding-top: 7px; border-top: 0.5px solid #E8DFC8; }
+  .cpf-item { font-size: 9px; color: var(--muted-light); }
+  .cpf-val { font-size: 9px; font-weight: 500; color: var(--ink-soft); }
+  .cb-coming { background: var(--cream); border-radius: 5px; padding: 12px; text-align: center; }
+  .cb-coming-t { font-size: 9px; color: var(--muted-light); letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* PHILOSOPHY */
+  .phil-section { background: var(--ink); }
+  .phil-section section { color: var(--cream); }
+  .phil-section .section-label { color: #5A5040; }
+  .phil-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 40px;
+    margin-top: 8px;
+  }
+  .phil-item {}
+  .phil-head {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    color: var(--gold-light);
+    margin-bottom: 8px;
+  }
+  .phil-body {
+    font-size: 14px;
+    color: #8A7D65;
+    line-height: 1.7;
+  }
+
+  /* TAPAUTH TEASER */
+  .tapauth-card {
+    background: var(--white);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    padding: 32px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+  }
+  @media (max-width: 600px) {
+    .tapauth-card { grid-template-columns: 1fr; }
+  }
+  .tapauth-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: #E6F1FB;
+    color: #185FA5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+  .tapauth-name { font-size: 20px; font-weight: 500; color: var(--ink-soft); margin-bottom: 8px; }
+  .tapauth-desc { font-size: 14px; color: var(--muted); line-height: 1.65; }
+  .tapauth-badge {
+    background: var(--amber-bg);
+    color: var(--amber-text);
+    font-size: 12px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+    align-self: flex-start;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    padding: 32px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-brand { font-family: var(--font-serif); color: var(--gold-light); font-size: 15px; }
+  .footer-sub { font-size: 12px; color: #5A5040; margin-top: 3px; }
+  .footer-right { font-size: 12px; color: #5A5040; text-align: right; }
+
+  /* RESPONSIVE */
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .cb-kpi-row { grid-template-columns: repeat(2, 1fr); }
+    .cb-props-row { grid-template-columns: 1fr; }
+    .cb-nav-links-bar { display: none; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">Milkam Hospitality</span>
+  <ul class="nav-links">
+    <li><a href="#tools">Our tools</a></li>
+    <li><a href="#why">Why we build</a></li>
+    <li><a href="#coming-soon">Coming soon</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div style="max-width:1100px; margin:0 auto;">
+  <div class="hero">
+    <p class="eyebrow">Built in-house · Milkam Hospitality</p>
+    <h1>Technology that brings <em>people</em> back to the center</h1>
+    <p class="hero-sub">We build our own tools so our teams spend less time chasing data and more time with guests.</p>
+    <span class="pill">3 properties &nbsp;·&nbsp; 3 tools &nbsp;·&nbsp; 1 philosophy</span>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- TOOLS -->
+<section id="tools">
+  <p class="section-label">Our tools</p>
+  <div class="apps-grid">
+
+    <div class="app-card">
+      <div class="app-icon icon-tack">&#9783;</div>
+      <div class="app-name">Tack</div>
+      <span class="app-status status-live">Live</span>
+      <p class="app-desc">Gives housekeeping leaders real-time visibility into daily productivity across all three properties — so inefficiencies surface early, not at end of shift. Available in English and Spanish.</p>
+      <p class="app-tag">&#9670;&nbsp; Bilingual · GM approval workflows · CSV export</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon icon-catbird">&#9965;</div>
+      <div class="app-name">Catbird Seat</div>
+      <span class="app-status status-live">Live</span>
+      <p class="app-desc">Puts the operational numbers that actually matter in front of managers and owners. Hotels that don't audit lose thousands over their lifetime — this makes auditing effortless and daily.</p>
+      <p class="app-tag">&#9670;&nbsp; Owner view · AR aging · Rate accountability</p>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SCREENSHOTS -->
+<div class="screenshot-section" id="screenshots">
+  <div class="screenshot-row">
+
+    <!-- TACK FRAME -->
+    <div>
+      <p class="screenshot-label">Tack — housekeeping intelligence</p>
+      <div class="screenshot-frame">
+        <div class="frame-bar">
+          <div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div>
+          <span class="frame-url">tack.milkamhospitality.com</span>
+        </div>
+        <div>
+          <div class="tack-nav-bar">
+            <div class="tack-nav-left">
+              <span class="owner-badge">OWNER</span>
+              <div>
+                <div class="tack-title-text">Tack</div>
+                <div class="tack-sub-text">482 entries · 3 properties</div>
+              </div>
+            </div>
+            <div class="lang-row">
+              <span class="lp lp-en">EN</span>
+              <span class="lp lp-es">ES</span>
+            </div>
+          </div>
+          <div class="tack-tabs-bar">
+            <div class="ttab">Log</div>
+            <div class="ttab">Entry</div>
+            <div class="ttab active">Stats</div>
+            <div class="ttab">Settings</div>
+          </div>
+          <div class="tack-body-inner">
+            <div class="period-pills">
+              <span class="pp">Today</span>
+              <span class="pp active">Last 7d</span>
+              <span class="pp">This Month</span>
+            </div>
+            <div class="sum-grid">
+              <div class="sc"><div class="sc-label">Total Shifts</div><div class="sc-val">57</div></div>
+              <div class="sc"><div class="sc-label">Total Rooms</div><div class="sc-val">734</div></div>
+              <div class="sc"><div class="sc-label">Avg Variance</div><div class="sc-val pos">+4m</div></div>
+            </div>
+            <div class="slbl">Hotel comparison</div>
+            <div class="hcard">
+              <div class="hcard-head"><span class="hcard-name" style="color:var(--gold);">Harborview Suites</span><span class="hcard-shifts">15 shifts</span></div>
+              <div class="hcard-code">HBVW</div>
+              <div class="hcard-stats">
+                <div><div class="hs-val">168</div><div class="hs-lbl">Rooms</div></div>
+                <div><div class="hs-val">11.2</div><div class="hs-lbl">Rooms/shift</div></div>
+                <div><div class="hs-val pos">+6m</div><div class="hs-lbl">Avg var</div></div>
+              </div>
+              <div class="bar-pills">
+                <div class="bp bp-g">13 Satisfactory</div>
+                <div class="bp bp-r">0 Unsat</div>
+                <div class="bp bp-a">2 Training</div>
+              </div>
+            </div>
+            <div class="hcard">
+              <div class="hcard-head"><span class="hcard-name" style="color:var(--green);">Elevate Wake Forest</span><span class="hcard-shifts">22 shifts</span></div>
+              <div class="hcard-code">ELVWF</div>
+              <div class="hcard-stats">
+                <div><div class="hs-val">293</div><div class="hs-lbl">Rooms</div></div>
+                <div><div class="hs-val">13.3</div><div class="hs-lbl">Rooms/shift</div></div>
+                <div><div class="hs-val pos">+3m</div><div class="hs-lbl">Avg var</div></div>
+              </div>
+              <div class="bar-pills">
+                <div class="bp bp-g">21 Satisfactory</div>
+                <div class="bp bp-r">0 Unsat</div>
+                <div class="bp bp-a">1 Training</div>
+              </div>
+            </div>
+            <div class="hcard">
+              <div class="hcard-head"><span class="hcard-name" style="color:#C0784A;">Northgate Extended Stay</span><span class="hcard-shifts">20 shifts</span></div>
+              <div class="hcard-code">NRTHG</div>
+              <div class="hcard-stats">
+                <div><div class="hs-val">273</div><div class="hs-lbl">Rooms</div></div>
+                <div><div class="hs-val">13.7</div><div class="hs-lbl">Rooms/shift</div></div>
+                <div><div class="hs-val pos">+2m</div><div class="hs-lbl">Avg var</div></div>
+              </div>
+              <div class="bar-pills">
+                <div class="bp bp-g">20 Satisfactory</div>
+                <div class="bp bp-r">0 Unsat</div>
+                <div class="bp bp-a">0 Training</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CATBIRD FRAME -->
+    <div>
+      <p class="screenshot-label">Catbird Seat — operations intelligence</p>
+      <div class="screenshot-frame">
+        <div class="frame-bar">
+          <div class="dot-r"></div><div class="dot-y"></div><div class="dot-g"></div>
+          <span class="frame-url">catbirdseat.milkamhospitality.com</span>
+        </div>
+        <div>
+          <div class="cb-nav-bar">
+            <div style="display:flex;align-items:center;">
+              <span class="cb-brand-text">Catbird Seat</span>
+              <span class="cb-badge-pill">OWNER VIEW</span>
+            </div>
+            <div class="cb-nav-links-bar">
+              <span class="cbnl active">Overview</span>
+              <span class="cbnl">AR / Aging</span>
+              <span class="cbnl">Performance</span>
+              <span class="cbnl">Accountability</span>
+            </div>
+          </div>
+          <div class="cb-body-inner">
+            <div class="cb-page-h">Owner Overview</div>
+            <div class="cb-page-s">ALL PROPERTIES · DATA CURRENT THROUGH YESTERDAY</div>
+            <div class="cb-kpi-row">
+              <div class="ck"><div class="ck-lbl">MTD Total Rev</div><div class="ck-val">$74,200</div><div class="ck-sub">▲ 8.3% vs LY</div></div>
+              <div class="ck"><div class="ck-lbl">YTD Total Rev</div><div class="ck-val">$1.24M</div><div class="ck-sub">▲ 11.2% vs LY</div></div>
+              <div class="ck"><div class="ck-lbl">Portfolio OCC</div><div class="ck-val">96.8%</div><div class="ck-sub">▲ 2.1pts vs LY</div></div>
+              <div class="ck"><div class="ck-lbl">AR Outstanding</div><div class="ck-val">$42,100</div><div class="ck-sub">▼ 18% from last mo</div></div>
+              <div class="ck"><div class="ck-lbl">Override Impact</div><div class="ck-val" style="color:var(--green);">+$1,840</div><div class="ck-sub" style="color:var(--muted-light);">14 overrides</div></div>
+            </div>
+            <div class="cb-props-row">
+              <div class="cprop">
+                <div class="cprop-head">
+                  <div class="cdot" style="background:var(--blue-dot);"></div>
+                  <div><div class="cprop-name">Harborview Suites</div><div class="cprop-code">HBVW · HotelKey</div></div>
+                </div>
+                <div class="cprop-stats">
+                  <div><div class="cps-val">97.2%</div><div class="cps-lbl">OCC</div></div>
+                  <div><div class="cps-val">$101</div><div class="cps-lbl">ADR</div></div>
+                  <div><div class="cps-val">$74.2k</div><div class="cps-lbl">MTD Rev</div></div>
+                </div>
+                <div class="cprop-foot">
+                  <div><div class="cpf-item">Avg OCC MTD</div><div class="cpf-val">94.8%</div></div>
+                  <div><div class="cpf-item">Avg ADR MTD</div><div class="cpf-val">$98.60</div></div>
+                </div>
+              </div>
+              <div class="cprop">
+                <div class="cprop-head">
+                  <div class="cdot" style="background:var(--green-dot);"></div>
+                  <div><div class="cprop-name">Elevate Wake Forest</div><div class="cprop-code">ELVWF · PEP</div></div>
+                </div>
+                <div class="cb-coming"><div class="cb-coming-t">PEP integration · coming soon</div></div>
+              </div>
+              <div class="cprop">
+                <div class="cprop-head">
+                  <div class="cdot" style="background:var(--amber-dot);"></div>
+                  <div><div class="cprop-name">Northgate Extended Stay</div><div class="cprop-code">NRTHG · PEP</div></div>
+                </div>
+                <div class="cb-coming"><div class="cb-coming-t">PEP integration · coming soon</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- PHILOSOPHY -->
+<div class="phil-section">
+  <section id="why">
+    <p class="section-label">Why we build instead of buy</p>
+    <div class="phil-grid">
+      <div class="phil-item">
+        <div class="phil-head">Fits us</div>
+        <p class="phil-body">Off-the-shelf software is built for the average hotel. We build for ours.</p>
+      </div>
+      <div class="phil-item">
+        <div class="phil-head">Human-first</div>
+        <p class="phil-body">Every tool exists to reduce friction for our people, not to replace them.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<hr class="divider" style="margin:0; border-color:#2A2820;">
+
+<!-- COMING SOON -->
+<section id="coming-soon">
+  <p class="section-label">Coming soon</p>
+  <div class="tapauth-card">
+    <div>
+      <div class="tapauth-icon">&#128274;</div>
+      <div class="tapauth-name">TapAuth</div>
+      <p class="tapauth-desc">Reimagines the credit card authorization experience for guests — calmer, clearer, and with the reassurance that real humans are handling their information with care.</p>
+    </div>
+    <span class="tapauth-badge">In development</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Milkam Hospitality</div>
+    <div class="footer-sub">Wake Forest, NC</div>
+  </div>
+  <div class="footer-right">
+    <div style="color:#5A5040; font-size:12px;">Built in-house · IHG &amp; Hilton properties</div>
+  </div>
+</footer>
+
+</body>
+</html>
