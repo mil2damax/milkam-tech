@@ -123,6 +123,11 @@
     border-top: 0.5px solid var(--border);
     margin: 0 6%;
   }
+  .divider-dark {
+    border: none;
+    border-top: 0.5px solid #2A2820;
+    margin: 0;
+  }
 
   /* SECTION */
   .section-wrap {
@@ -137,6 +142,16 @@
     color: var(--muted);
     margin-bottom: 40px;
   }
+  .section-sublabel {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted-light);
+    margin-bottom: 20px;
+    margin-top: 48px;
+    padding-top: 48px;
+    border-top: 0.5px solid var(--border);
+  }
 
   /* APP CARDS */
   .apps-grid {
@@ -150,6 +165,10 @@
     border-radius: 16px;
     padding: 36px;
   }
+  .app-card.construction {
+    border-color: #C8B89A;
+    background: #FDFAF5;
+  }
   .app-icon {
     width: 52px;
     height: 52px;
@@ -160,10 +179,11 @@
     margin-bottom: 22px;
     font-size: 24px;
   }
-  .icon-tack     { background: var(--green-bg);  color: var(--green); }
-  .icon-catbird  { background: var(--purple-bg); color: var(--purple-text); }
-  .icon-tapauth  { background: var(--blue-bg);   color: var(--blue-text); }
-  .icon-slack    { background: #FFF0E0;           color: #B94A00; }
+  .icon-tack        { background: var(--green-bg);  color: var(--green); }
+  .icon-catbird     { background: var(--purple-bg); color: var(--purple-text); }
+  .icon-tapauth     { background: var(--blue-bg);   color: var(--blue-text); }
+  .icon-slack       { background: #FFF0E0;           color: #B94A00; }
+  .icon-site-mat    { background: #F0EAE0;           color: #7A5C2E; }
 
   .app-status {
     display: inline-block;
@@ -175,6 +195,13 @@
   .status-live { background: var(--green-bg); color: var(--green); }
   .status-dev  { background: var(--amber-bg); color: var(--amber-text); }
 
+  .app-company {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted-light);
+    margin-bottom: 6px;
+  }
   .app-name {
     font-size: 22px;
     font-weight: 600;
@@ -252,7 +279,8 @@
 <nav>
   <span class="nav-brand">Milkam Hospitality</span>
   <ul class="nav-links">
-    <li><a href="#tools">Our tools</a></li>
+    <li><a href="#hospitality">Hospitality</a></li>
+    <li><a href="#construction">Construction</a></li>
     <li><a href="#why">Why we build</a></li>
   </ul>
 </nav>
@@ -260,18 +288,18 @@
 <!-- HERO -->
 <div style="max-width:1200px; margin:0 auto;">
   <div class="hero">
-    <p class="eyebrow">Built in-house · Milkam Hospitality</p>
+    <p class="eyebrow">Built in-house · Milkam &amp; Novel</p>
     <h1>Technology that brings <em>people</em> back to the center</h1>
-    <p class="hero-sub">We build our own tools so our teams spend less time chasing data and more time with guests.</p>
-    <span class="pill">3 properties &nbsp;·&nbsp; 4 tools &nbsp;·&nbsp; 1 philosophy</span>
+    <p class="hero-sub">We build our own tools so our teams spend less time chasing data and more time doing the work that matters.</p>
+    <span class="pill">2 companies &nbsp;·&nbsp; 5 tools &nbsp;·&nbsp; 1 philosophy</span>
   </div>
 </div>
 
 <hr class="divider">
 
-<!-- TOOLS -->
-<div class="section-wrap" id="tools">
-  <p class="section-label">Our tools</p>
+<!-- HOSPITALITY TOOLS -->
+<div class="section-wrap" id="hospitality">
+  <p class="section-label">Hospitality — Milkam Hotels</p>
   <div class="apps-grid">
 
     <div class="app-card">
@@ -311,6 +339,24 @@
 
 <hr class="divider">
 
+<!-- CONSTRUCTION TOOLS -->
+<div class="section-wrap" id="construction">
+  <p class="section-label">Construction — Novel Construction</p>
+  <div class="apps-grid">
+
+    <div class="app-card construction">
+      <div class="app-icon icon-site-mat">&#128230;</div>
+      <div class="app-name">Site Material Inventory</div>
+      <span class="app-status status-live">Live</span>
+      <p class="app-desc">Compares what was ordered and paid for against what actually arrived on site — so nothing slips through the cracks on materials. Tracks inventory levels in real time and alerts the team when stock runs low so vendors can be notified before work slows down.</p>
+      <p class="app-tag">&#9670;&nbsp; PO vs. delivery reconciliation &nbsp;·&nbsp; Low stock alerts &nbsp;·&nbsp; Vendor notifications</p>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
 <!-- PHILOSOPHY -->
 <div class="phil-band" id="why">
   <div class="section-wrap">
@@ -331,7 +377,7 @@
 <!-- FOOTER -->
 <footer>
   <div>
-    <div class="footer-brand">Milkam Hospitality</div>
+    <div class="footer-brand">Milkam Hospitality &nbsp;&amp;&nbsp; Novel Construction</div>
     <div class="footer-sub">Wake Forest, NC</div>
   </div>
   <div class="footer-right">
