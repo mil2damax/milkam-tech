@@ -184,6 +184,9 @@
   .icon-tapauth     { background: var(--blue-bg);   color: var(--blue-text); }
   .icon-slack       { background: #FFF0E0;           color: #B94A00; }
   .icon-site-mat    { background: #F0EAE0;           color: #7A5C2E; }
+  .icon-fd          { background: #E8F3F1;           color: #1F6F64; }
+  .icon-clock       { background: #F6ECEA;           color: #9A3B2E; }
+  .icon-soon        { background: var(--cream-dark); color: var(--muted); }
 
   .app-status {
     display: inline-block;
@@ -194,6 +197,23 @@
   }
   .status-live { background: var(--green-bg); color: var(--green); }
   .status-dev  { background: var(--amber-bg); color: var(--amber-text); }
+  .status-soon { background: var(--cream-dark); color: var(--muted); }
+
+  /* ROADMAP — compact cards */
+  .roadmap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .roadmap-card {
+    background: transparent;
+    border: 0.5px dashed var(--border);
+    border-radius: 14px;
+    padding: 26px;
+  }
+  .roadmap-card .app-icon { width: 42px; height: 42px; font-size: 20px; margin-bottom: 16px; }
+  .roadmap-card .app-name { font-size: 18px; margin-bottom: 8px; }
+  .roadmap-card .app-desc { font-size: 15px; margin-bottom: 0; }
 
   .app-company {
     font-size: 11px;
@@ -280,6 +300,7 @@
   <span class="nav-brand">Milkam Hospitality</span>
   <ul class="nav-links">
     <li><a href="#hospitality">Hospitality</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#construction">Construction</a></li>
     <li><a href="#why">Why we build</a></li>
   </ul>
@@ -291,7 +312,7 @@
     <p class="eyebrow">Built in-house · Milkam &amp; Novel</p>
     <h1>Technology that brings <em>people</em> back to the center</h1>
     <p class="hero-sub">We build our own tools so our teams spend less time chasing data and more time doing the work that matters.</p>
-    <span class="pill">2 companies &nbsp;·&nbsp; 5 tools &nbsp;·&nbsp; 1 philosophy</span>
+    <span class="pill">2 companies &nbsp;·&nbsp; 12 tools &nbsp;·&nbsp; 1 philosophy</span>
   </div>
 </div>
 
@@ -330,8 +351,62 @@
       <div class="app-icon icon-tapauth">&#128274;</div>
       <div class="app-name">TapAuth</div>
       <span class="app-status status-dev">In development</span>
-      <p class="app-desc">Reimagines the credit card authorization experience for guests — calmer, clearer, and with the reassurance that real humans are handling their information with care. Security that feels human.</p>
-      <p class="app-tag">&#9670;&nbsp; Guest-first design &nbsp;·&nbsp; Secure &nbsp;·&nbsp; Coming soon</p>
+      <p class="app-desc">Replaces paper and emailed third-party authorization forms when a company or family member pays for someone else's stay. Guests get one clear, secure link; the card is verified by the bank on the spot, and the front desk sees exactly what's authorized — and what's about to expire.</p>
+      <p class="app-tag">&#9670;&nbsp; Bank-verified payment links &nbsp;·&nbsp; ID scan &nbsp;·&nbsp; Fewer chargebacks</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon icon-fd">&#9998;</div>
+      <div class="app-name">Front Desk Hub</div>
+      <span class="app-status status-dev">In development</span>
+      <p class="app-desc">One home for the front desk team instead of a scroll of Slack messages. Every shift starts with a clear checklist, every procedure lives in one searchable library, and questions get answered fast — drawing on our SOPs, our GMs, and company rules.</p>
+      <p class="app-tag">&#9670;&nbsp; Shift checklists &nbsp;·&nbsp; SOP library &nbsp;·&nbsp; Ask a question, get an answer</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon icon-clock">&#9719;</div>
+      <div class="app-name">Time Clock</div>
+      <span class="app-status status-dev">In development</span>
+      <p class="app-desc">Our own clock-in for every hotel — built so a punch is never lost, even when the internet drops. GMs review hours daily, schedules and time off live in one place, and payroll week becomes an export instead of a project.</p>
+      <p class="app-tag">&#9670;&nbsp; Offline-safe punches &nbsp;·&nbsp; Daily GM review &nbsp;·&nbsp; Scheduling &amp; PTO &nbsp;·&nbsp; Payroll export</p>
+    </div>
+
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ROADMAP -->
+<div class="section-wrap" id="roadmap">
+  <p class="section-label">On the roadmap — Milkam Hotels</p>
+  <div class="roadmap-grid">
+
+    <div class="roadmap-card">
+      <div class="app-icon icon-soon">&#128451;</div>
+      <div class="app-name">Supply Inventory</div>
+      <span class="app-status status-soon">Coming soon</span>
+      <p class="app-desc">Tracks housekeeping and maintenance supplies at each property — linens, amenities, chemicals, parts — so we reorder before we run out, not after.</p>
+    </div>
+
+    <div class="roadmap-card">
+      <div class="app-icon icon-soon">&#128295;</div>
+      <div class="app-name">Maintenance Tracker</div>
+      <span class="app-status status-soon">Coming soon</span>
+      <p class="app-desc">Work orders and preventive maintenance for every room and system, so small fixes never turn into out-of-order rooms.</p>
+    </div>
+
+    <div class="roadmap-card">
+      <div class="app-icon icon-soon">&#127760;</div>
+      <div class="app-name">OTA Reconciliation</div>
+      <span class="app-status status-soon">Coming soon</span>
+      <p class="app-desc">Matches online travel agency invoices and payouts against our own records, so every commission and payment is accounted for.</p>
+    </div>
+
+    <div class="roadmap-card">
+      <div class="app-icon icon-soon">&#128179;</div>
+      <div class="app-name">Card Reconciliation</div>
+      <span class="app-status status-soon">Coming soon</span>
+      <p class="app-desc">Ties each night's card payments to the processor batch and the bank deposit — automatically, instead of line by line.</p>
     </div>
 
   </div>
